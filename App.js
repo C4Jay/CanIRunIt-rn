@@ -1,17 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
-import Home from './components/home';
-import GameSwitch from './components/gameswitch';
+import Canirunnavs from './nav/Canirunnavs';
 
 export default function App() {
+
+ 
+  
   return (
-    
-    <View style={styles.container}>
-    {/* <Home></Home> */}
-    <GameSwitch></GameSwitch>   
-    </View>
+   <Canirunnavs></Canirunnavs>
   );
+  
 }
+
 
 const styles = StyleSheet.create({
   container: {
