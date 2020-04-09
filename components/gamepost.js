@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { ProgressBar, Colors } from 'react-native-paper';
+import Rigscores from './scores/rigscores';
+import Pickercomp from './scores/picker';
 
 class Gamepost extends Component {
 
@@ -27,13 +29,22 @@ class Gamepost extends Component {
                 <Text style={styles.text}>{this.props.navigation.getParam('gpu')}</Text>
                 <Text style={styles.text}>{this.props.navigation.getParam('ram')}</Text>
             <View style={styles.progress}>
-                <Text>Progress</Text> 
+                {/* <Text>Progress</Text> 
                 <ProgressBar style={{height: 10}} progress={0.9} color="purple" />
                 <Text>Progress</Text> 
                 <ProgressBar style={{height: 10}} progress={0.6} color="purple" />
                 <Text>Progress</Text> 
-                <ProgressBar style={{height: 10}} progress={0.7} color="purple" />
+                <ProgressBar style={{height: 10}} progress={0.7} color="purple" /> */
+                }
+                <Rigscores
+                cpuscore = {0.9}
+                gpuscore = {0.6}
+                ramscore = {0.8}
+                ></Rigscores>
             </View>  
+            <View style={{marginTop: 10}}>
+                <Pickercomp></Pickercomp>
+            </View>
             </View>
         )
     }
@@ -51,10 +62,10 @@ const styles = StyleSheet.create({
     },
     text: {
         fontFamily: 'sans-serif-condensed',
-        fontSize: 28
+        fontSize: 15
     },
     progress: {
-        width: 256
+        alignItems: 'center'
     }
 })
 
