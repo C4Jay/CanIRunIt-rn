@@ -67,7 +67,11 @@ class Gamelist extends Component {
                 if(game.title.charAt(0) == this.state.first){
                 return (
                     <View key={game._id} style={styles.btn}>
-                        <Button color="#fae01e" labelStyle={{color: '#050a0e', fontSize: 9}} mode="text" >{game.title.replace(' system requirements','')}</Button>
+                        <Button color="#fae01e" labelStyle={{color: '#050a0e', fontSize: 9}} mode="text" onPress={() => {this.props.navigation.navigate({routeName: 'gamepost', params: {
+                            cpu: game.Intel_CPU,
+                            gpu: game.NVIDIA_Graphics,
+                            ram: game.RAM
+                        }})}} >{game.title.replace(' system requirements','')}</Button>
                     </View>
                 )
                 }
