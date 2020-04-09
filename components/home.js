@@ -16,7 +16,7 @@ class Home extends Component {
         <View style={styles.screen}>
         <Text style={styles.text}>CANIRUNIT_</Text>
         <View style={styles.btnview}>
-        <Button color=/* "#00f0ff" */"#fcee09" onPress={() => {this.props.navigation.navigate('gameswitch')}} title="test now"></Button>
+        <Button color=/* "#00f0ff" */"#fae01e" onPress={() => {this.props.navigation.navigate('gameswitch')}} title="test now"></Button>
         </View>
         </View>
     )
@@ -25,7 +25,7 @@ class Home extends Component {
 
 const styles = StyleSheet.create({
   screen: {
-    backgroundColor: '#fcee09',
+    backgroundColor: /* '#fcee09' */'#fae01e',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
