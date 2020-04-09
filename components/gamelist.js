@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import { View, Text, Button, StyleSheet } from 'react-native';
 import axios from 'axios'; 
-
+import { ScrollView } from 'react-native-gesture-handler';
+import Spinner from 'react-native-loading-spinner-overlay';
 
 var gamelist = []
+var gamelistsort = []
 
 class Gamelist extends Component {
 
@@ -11,7 +13,8 @@ class Gamelist extends Component {
        game : '',
      //  gamelist: [],
        first: '',
-       games: false
+       games: false,
+       spinner: true
    }
 
     gamelist = () => {
@@ -29,8 +32,14 @@ class Gamelist extends Component {
     axios.get('http://canirunit.herokuapp.com/results')
     .then(response => {
         gamelist = response.data,
+        gamelistsort = gamelist.sort(function(x,y) {
+            if(x.title < y.title) {return -1;}
+            if(x.title > y.title) {return 1;}
+            return 0;
+          })
         this.setState({
-            games: true
+            games: true,
+            spinner: false
         })
     }).catch(err => {
         console.log(err)
@@ -53,11 +62,11 @@ class Gamelist extends Component {
         let gamerenderlist = null;
 
         if(this.state.games){
-            gamerenderlist = gamelist.map(game => {
+            gamerenderlist = gamelistsort.map(game => {
                 if(game.title.charAt(0) == this.state.first){
                 return (
-                    <View>
-                        <Button title={game.title.replace(' system requirements','')}></Button>
+                    <View key={game._id} style={styles.btn}>
+                        <Button color=/* "#fae01e" */"#050a0e" title={game.title.replace(' system requirements','')}></Button>
                     </View>
                 )
                 }
@@ -67,10 +76,16 @@ class Gamelist extends Component {
 
         return (
             <View style={styles.screen}>
-                <Text>{this.props.navigation.getParam('first')}</Text>
-                <Button title="click" onPress={this.gamelist}></Button>
+                <Text style={styles.topic}>Choose a game</Text>
             {this.state.game ? <Button title={this.state.game}></Button> : null }
+            <Spinner
+          visible={this.state.spinner}
+          textContent={'wait...'}
+          textStyle={styles.spinner}
+        />
+            <ScrollView>
             {gamerenderlist}
+            </ScrollView>
             </View>
         )
     }
@@ -80,7 +95,24 @@ const styles = StyleSheet.create({
     screen: {
         flex: 1,
         alignItems: 'center',
-        backgroundColor: '#fae01e'
+        backgroundColor: '#fae01e',
+        
+    },
+    btn: {
+        marginTop: 3,
+        width: 200,
+        maxWidth: '98%',
+        borderWidth: 1,
+        shadowOpacity: 40
+    },
+    topic: {
+        fontFamily: 'sans-serif-condensed',
+        fontSize: 28
+    },
+    spinner: {
+        fontSize: 18,
+        fontFamily: 'sans-serif-condensed',
+        color: 'white'
     }
 })
 
