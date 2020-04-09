@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { View, Text, Button, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Button } from 'react-native-paper';
 
 const letters = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
 
@@ -25,10 +26,11 @@ class GameSwitch extends Component {
                 <Text style={styles.text}>Please select a letter</Text>
                 <ScrollView style={styles.screen}>
                 {letters.map(letter => <View style={styles.btn} key={letter}>
-                <Button style={styles.btns} title={letter} onPress={() => {this.props.navigation.navigate({routeName: 'gamelist',
+                <Button mode="contained" compact color="#fae01e" labelStyle={{color: '#050a0e'}} style={styles.btns} onPress={() => {this.props.navigation.navigate({routeName: 'gamelist',
                  params: { 
                     first: letter 
                     } })}}>
+                    {letter}
                 </Button>
                 </View>)}
                 </ScrollView>
@@ -56,7 +58,9 @@ const styles = StyleSheet.create({
     },
     btn: {
         marginTop: 3,
-        width: 100
+        width: 100,
+        borderWidth: 1,
+        borderRadius: 6
     },
     btns: {
         fontFamily: 'sans-serif-condensed'

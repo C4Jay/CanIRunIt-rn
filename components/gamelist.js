@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import axios from 'axios'; 
 import { ScrollView } from 'react-native-gesture-handler';
 import Spinner from 'react-native-loading-spinner-overlay';
+import { Button } from 'react-native-paper';
 
 var gamelist = []
 var gamelistsort = []
@@ -66,7 +67,7 @@ class Gamelist extends Component {
                 if(game.title.charAt(0) == this.state.first){
                 return (
                     <View key={game._id} style={styles.btn}>
-                        <Button color=/* "#fae01e" */"#050a0e" title={game.title.replace(' system requirements','')}></Button>
+                        <Button color="#fae01e" labelStyle={{color: '#050a0e', fontSize: 9}} mode="text" >{game.title.replace(' system requirements','')}</Button>
                     </View>
                 )
                 }
@@ -83,7 +84,7 @@ class Gamelist extends Component {
           textContent={'wait...'}
           textStyle={styles.spinner}
         />
-            <ScrollView>
+            <ScrollView style={styles.scroll}>
             {gamerenderlist}
             </ScrollView>
             </View>
@@ -100,10 +101,11 @@ const styles = StyleSheet.create({
     },
     btn: {
         marginTop: 3,
-        width: 200,
-        maxWidth: '98%',
+       
+        width: 256,
         borderWidth: 1,
-        shadowOpacity: 40
+        shadowOpacity: 40,
+        borderRadius: 6
     },
     topic: {
         fontFamily: 'sans-serif-condensed',
@@ -113,6 +115,9 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontFamily: 'sans-serif-condensed',
         color: 'white'
+    },
+    scroll: {
+        marginBottom: 10,
     }
 })
 

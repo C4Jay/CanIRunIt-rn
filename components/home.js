@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, StyleSheet} from 'react-native';
+import { Button } from 'react-native-paper';
 
 class Home extends Component {
   static navigationOptions = {
@@ -16,7 +17,7 @@ class Home extends Component {
         <View style={styles.screen}>
         <Text style={styles.text}>CANIRUNIT_</Text>
         <View style={styles.btnview}>
-        <Button color=/* "#00f0ff" */"#fae01e" onPress={() => {this.props.navigation.navigate('gameswitch')}} title="test now"></Button>
+        <Button color=/* "#00f0ff" */"#fae01e" labelStyle={{color: '#050a0e'}} onPress={() => {this.props.navigation.navigate('gameswitch')}}>test now</Button>
         </View>
         </View>
     )
@@ -38,7 +39,8 @@ const styles = StyleSheet.create({
       btnview: {
         marginTop: 189,
         width: 168,
-        borderWidth: 1 
+        borderWidth: 1,
+        borderRadius: 6 
       }
 })
 
