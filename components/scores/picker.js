@@ -15,7 +15,7 @@ export default function Pickercomp() {
   const [gpuscorefinl, setgpuscorefinl] = useState(0)
   const [ramscorefinl, setramscorefinl] = useState(0)
 
-  const cpuscoreHandler = (cpu, gpu) => {
+  const cpuscoreHandler = (cpu, gpu, ram) => {
     console.log(cpu)
     axios.get('https://warm-island-31012.herokuapp.com/cpuscoresfinl/'+ cpu)
     .then(response => {
@@ -30,6 +30,12 @@ export default function Pickercomp() {
       setgpuscorefinl(response.data.score)
 
     })
+
+    axios.get('https://warm-island-31012.herokuapp.com/ramscores/'+ ram )
+    .then(response => {
+      console.log(response)
+      setramscorefinl(response.data.score)
+    })
   }
 
   return (
@@ -39,7 +45,8 @@ export default function Pickercomp() {
       <Rigscores
       topic = "Your rig scores" 
       cpuscore={(cpuscorefinl/ 1413)}
-      gpuscore={(gpuscorefinl/9555)}></Rigscores> : null }
+      gpuscore={(gpuscorefinl/9555)}
+      ramscore={(ramscorefinl/16)}></Rigscores> : null }
       </View> 
 
     <View style={styles.container}>
@@ -1919,10 +1926,24 @@ export default function Pickercomp() {
         style={{ height: 50, width: 238 }}
         onValueChange={(itemValue, itemIndex) => setram(itemValue)}
       >
-        <Picker.Item label="Java" value="java" />
-        <Picker.Item label="JavaScript" value="js" />
+        <Picker.Item label="1GB" value="1GB" />
+        <Picker.Item label="2GB" value="2GB" />
+        <Picker.Item label="3GB" value="3GB" />
+        <Picker.Item label="4GB" value="4GB" />
+        <Picker.Item label="5GB" value="5GB" />
+        <Picker.Item label="6GB" value="6GB" />
+        <Picker.Item label="7GB" value="7GB" />
+        <Picker.Item label="8GB" value="8GB" />
+        <Picker.Item label="9GB" value="9GB" />
+        <Picker.Item label="10GB" value="10GB" />
+        <Picker.Item label="11GB" value="11GB" />
+        <Picker.Item label="12GB" value="12GB" />
+        <Picker.Item label="13GB" value="13GB" />
+        <Picker.Item label="14GB" value="14GB" />
+        <Picker.Item label="15GB" value="15GB" />
+        <Picker.Item label="16GB" value="16GB" />
       </Picker>
-      <Button onPress={cpuscoreHandler(cpu, gpu)}>test</Button>
+      <Button onPress={cpuscoreHandler(cpu, gpu, ram)}>test</Button>
      <Text>cpuscore : {cpuscorefinl}</Text>
      <Text>gpuscore : {gpuscorefinl}</Text>
      <Text>ramscore : {ramscorefinl}</Text>
