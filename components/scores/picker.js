@@ -32,15 +32,17 @@ export default function Pickercomp() {
   }
 
   return (
-    <View>
+    <View style={styles.screen}>
+      <View style={styles.score}>
       {cpuscorefinl != 0 ? 
       <Rigscores 
       cpuscore={(cpuscorefinl/ 1413)}
       gpuscore={(gpuscorefinl/9555)}></Rigscores> : null }
-
+      </View> 
 
     <View style={styles.container}>
   {/*  / <Text>Choose your cpu</Text> */}
+  <Text>Test for your rig</Text>
       <Picker
         selectedValue={cpu}
         style={{ height: 50, width: 238 }}
@@ -1918,7 +1920,7 @@ export default function Pickercomp() {
         <Picker.Item label="Java" value="java" />
         <Picker.Item label="JavaScript" value="js" />
       </Picker>
-      <Button onPress={cpuscoreHandler(cpu, gpu)}>click</Button>
+      <Button onPress={cpuscoreHandler(cpu, gpu)}>test</Button>
      <Text>{cpuscorefinl}</Text>
      <Text>{gpuscorefinl}</Text>
 
@@ -1928,14 +1930,27 @@ export default function Pickercomp() {
 }
 
 const styles = StyleSheet.create({
+  score: {
+    width: 356,
+    alignItems: 'center',
+    marginTop: 8
+  },
     container: {
     //  flex: 1,
       
      // alignItems: "center",
+    
       backgroundColor: 'white',
       borderRadius: 6,
       padding: 10,
-      width: 256
+      width: 256,
+      marginTop: 10
+    },
+    screen: {
+      alignItems: 'center',
+      flex: 1,
+    width: 256,
+    marginBottom: 400
     }
   });
   

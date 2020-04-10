@@ -25,8 +25,9 @@ class Gamepost extends Component {
 
     render () {
         return (
-            <ScrollView>
+            <ScrollView style={styles.main}>
             <View style={styles.screen}>
+            <Text style={{fontSize: 19}}>Minimum requirements</Text>
                 <Text style={styles.text}>{this.props.navigation.getParam('cpu')}</Text>
                 <Text style={styles.text}>{this.props.navigation.getParam('gpu')}</Text>
                 <Text style={styles.text}>{this.props.navigation.getParam('ram')}</Text>
@@ -61,7 +62,9 @@ const styles = StyleSheet.create({
      //   justifyContent: 'center',
         paddingTop: 10,
         fontFamily: 'sans-serif-condensed',
-        fontSize: 28
+        fontSize: 28,
+        borderWidth: 1,
+        marginBottom: 10
     },
     text: {
         fontFamily: 'sans-serif-condensed',
@@ -69,6 +72,10 @@ const styles = StyleSheet.create({
     },
     progress: {
         alignItems: 'center'
+    },
+    main: {
+        borderWidth: 1,
+        marginBottom: 10
     }
 })
 

@@ -8,11 +8,11 @@ const Rigscores = (props) => {
         <Card elevation={19} style={styles.card}>
         <Card.Title title="rigscores" style={styles.topic}></Card.Title>
                 <Text>CPU</Text> 
-                <ProgressBar style={{height: 30}} progress={props.cpuscore} color="#00ff9f" />
+                <ProgressBar style={{height: 30}} progress={props.cpuscore} color="#00c8ff" />
                 <Text>GPU</Text> 
                 <ProgressBar style={{height: 30}} progress={props.gpuscore} color="#00ff9f" />
                 <Text>RAM</Text> 
-                <ProgressBar style={{height: 30}} progress={props.ramscore} color="#00ff9f" />
+                <ProgressBar style={{height: 30}} progress={props.ramscore} color="#2bff00" />
                 </Card>
         </View>  
     )
