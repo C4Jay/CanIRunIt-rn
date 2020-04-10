@@ -6,7 +6,7 @@ const Rigscores = (props) => {
     return (
         <View style={styles.progress}>
         <Card elevation={19} style={styles.card}>
-        <Card.Title title="rigscores" style={styles.topic}></Card.Title>
+        <Card.Title title={props.topic} style={styles.topic}></Card.Title>
                 <Text>CPU</Text> 
                 <ProgressBar style={{height: 30}} progress={props.cpuscore} color="#00c8ff" />
                 <Text>GPU</Text> 
@@ -33,7 +33,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'white'
     },
     topic: {
-        alignItems: 'center'
+        alignItems: 'center',
+        fontSize: 18
     }
 })
 

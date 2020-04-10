@@ -40,6 +40,7 @@ class Gamepost extends Component {
                 <ProgressBar style={{height: 10}} progress={0.7} color="purple" /> */
                 }
                 <Rigscores
+                topic = "Minimum requirements scores"
                 cpuscore = {0.9}
                 gpuscore = {0.6}
                 ramscore = {0.8}

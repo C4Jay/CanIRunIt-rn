@@ -8,11 +8,12 @@ import Rigscores from "./rigscores";
 const cpus = [{label: 'core i5', value: 'core i5'},{label: 'i3', value: 'i3'}]
 
 export default function Pickercomp() {
-  const [cpu, setcpu] = useState('');
-  const [gpu, setgpu] = useState('');
-  const [ram, setram] = useState('');
+  const [cpu, setcpu] = useState('cpu');
+  const [gpu, setgpu] = useState('gpu');
+  const [ram, setram] = useState('ram');
   const [cpuscorefinl, setcpuscorefinl] = useState(0)
   const [gpuscorefinl, setgpuscorefinl] = useState(0)
+  const [ramscorefinl, setramscorefinl] = useState(0)
 
   const cpuscoreHandler = (cpu, gpu) => {
     console.log(cpu)
@@ -35,7 +36,8 @@ export default function Pickercomp() {
     <View style={styles.screen}>
       <View style={styles.score}>
       {cpuscorefinl != 0 ? 
-      <Rigscores 
+      <Rigscores
+      topic = "Your rig scores" 
       cpuscore={(cpuscorefinl/ 1413)}
       gpuscore={(gpuscorefinl/9555)}></Rigscores> : null }
       </View> 
@@ -1921,8 +1923,9 @@ export default function Pickercomp() {
         <Picker.Item label="JavaScript" value="js" />
       </Picker>
       <Button onPress={cpuscoreHandler(cpu, gpu)}>test</Button>
-     <Text>{cpuscorefinl}</Text>
-     <Text>{gpuscorefinl}</Text>
+     <Text>cpuscore : {cpuscorefinl}</Text>
+     <Text>gpuscore : {gpuscorefinl}</Text>
+     <Text>ramscore : {ramscorefinl}</Text>
 
     </View>
     </View>
