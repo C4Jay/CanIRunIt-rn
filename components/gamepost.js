@@ -3,6 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import { ProgressBar, Colors } from 'react-native-paper';
 import Rigscores from './scores/rigscores';
 import Pickercomp from './scores/picker';
+import { ScrollView } from 'react-native-gesture-handler';
 
 class Gamepost extends Component {
 
@@ -24,6 +25,7 @@ class Gamepost extends Component {
 
     render () {
         return (
+            <ScrollView>
             <View style={styles.screen}>
                 <Text style={styles.text}>{this.props.navigation.getParam('cpu')}</Text>
                 <Text style={styles.text}>{this.props.navigation.getParam('gpu')}</Text>
@@ -46,6 +48,7 @@ class Gamepost extends Component {
                 <Pickercomp></Pickercomp>
             </View>
             </View>
+            </ScrollView>
         )
     }
 }
