@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { ProgressBar, Colors } from 'react-native-paper';
 import Rigscores from './scores/rigscores';
 import Pickercomp from './scores/picker';
 import { ScrollView } from 'react-native-gesture-handler';
+import axios from 'axios';
 
 class Gamepost extends Component {
 
@@ -20,7 +21,45 @@ class Gamepost extends Component {
     state = {
         cpu: '',
         gpu: '',
-        ram: ''
+        ram: '',
+        cpuscore: 0,
+        gpuscore: 0,
+        ramscore: 0
+    }
+
+    componentDidMount() {
+        axios.get('https://warm-island-31012.herokuapp.com/cpuscoresfinl/Intel '+ this.props.navigation.getParam('cpu'))
+    .then(response => {
+      console.log(response.data.score)
+      this.setState({
+          cpuscore: response.data.score
+      })
+
+    }).catch(err => {
+        console.log(err)
+    })
+
+    axios.get('https://warm-island-31012.herokuapp.com/gpuscoresfinl/'+ this.props.navigation.getParam('gpu'))
+    .then(response => {
+      console.log(response.data.score)
+      this.setState({
+        gpuscore: response.data.score
+    })
+
+    }).catch(err => {
+        console.log(err)
+    })
+
+    axios.get('https://warm-island-31012.herokuapp.com/ramscores/'+ this.props.navigation.getParam('ram').replace(' GB','GB') )
+    .then(response => {
+      console.log(response)
+      this.setState({
+        ramscore: response.data.score
+    })
+
+    }).catch(err => {
+        console.log(err)
+    })
     }
 
     render () {
@@ -39,12 +78,13 @@ class Gamepost extends Component {
                 <Text>Progress</Text> 
                 <ProgressBar style={{height: 10}} progress={0.7} color="purple" /> */
                 }
+             
                 <Rigscores
                 topic = "Minimum requirements scores"
-                cpuscore = {0.9}
-                gpuscore = {0.6}
-                ramscore = {0.8}
-                ></Rigscores>
+                cpuscore = {this.state.cpuscore / 1413}
+                gpuscore = {this.state.gpuscore / 9555}
+                ramscore = {this.state.ramscore / 16}
+                ></Rigscores> 
             </View>  
             <View style={{marginTop: 10}}>
                 <Pickercomp></Pickercomp>

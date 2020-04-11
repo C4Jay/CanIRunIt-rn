@@ -15,8 +15,8 @@ export default function Pickercomp() {
   const [gpuscorefinl, setgpuscorefinl] = useState(0)
   const [ramscorefinl, setramscorefinl] = useState(0)
 
-  const cpuscoreHandler = (cpu, gpu, ram) => {
-    console.log(cpu)
+  const cpuscoreHandler = (/* cpu, gpu, ram */) => {
+    
     axios.get('https://warm-island-31012.herokuapp.com/cpuscoresfinl/'+ cpu)
     .then(response => {
       console.log(response)
@@ -1943,7 +1943,7 @@ export default function Pickercomp() {
         <Picker.Item label="15GB" value="15GB" />
         <Picker.Item label="16GB" value="16GB" />
       </Picker>
-      <Button onPress={cpuscoreHandler(cpu, gpu, ram)}>test</Button>
+      <Button onPress={cpuscoreHandler}>test</Button>
      <Text>cpuscore : {cpuscorefinl}</Text>
      <Text>gpuscore : {gpuscorefinl}</Text>
      <Text>ramscore : {ramscorefinl}</Text>
